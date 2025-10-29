@@ -530,7 +530,7 @@
         document.documentElement.style.setProperty('--site-bg-image', `url('${siteConfig.siteBackgroundUrl}')`);
         const faviconLink = document.querySelector('link[rel="icon"]');
         if (siteConfig.faviconUrl) { faviconLink.href = siteConfig.faviconUrl; }
-        document.getElementById('footer-copyright').innerHTML = `&copy; ${new Date().getFullYear()} جميع الحقوق محفوظة لمدونة ${siteConfig.teacherName}.`;
+        document.getElementById('footer-copyright').innerHTML = `&copy; ${new Date().getFullYear()} جميع الحقوق محفوظة ${siteConfig.teacherName}.`;
 
         const socialLinksContainer = document.getElementById('social-links-container');
         let socialLinksHTML = '';
@@ -570,7 +570,7 @@
             });
             homeHTML += `</div></section>`;
             mainContent.innerHTML = homeHTML;
-            document.title = `مدونة ${siteConfig.teacherName}`;
+            document.title = ` ${siteConfig.teacherName}`;
         }
 
         function renderGradeView(gradeId) {
@@ -593,7 +593,7 @@
             });
             gradeHTML += `</div></section>`;
             mainContent.innerHTML = gradeHTML;
-            document.title = `${gradeData.name} - مدونة ${siteConfig.teacherName}`;
+            document.title = `${gradeData.name} - ${siteConfig.teacherName}`;
         }
         
         function renderContactView() {
@@ -634,5 +634,6 @@
 
 </body>
 </html>
+
 
 
