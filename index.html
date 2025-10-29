@@ -530,7 +530,7 @@
         document.documentElement.style.setProperty('--site-bg-image', `url('${siteConfig.siteBackgroundUrl}')`);
         const faviconLink = document.querySelector('link[rel="icon"]');
         if (siteConfig.faviconUrl) { faviconLink.href = siteConfig.faviconUrl; }
-        document.getElementById('footer-copyright').innerHTML = `&copy; ${new Date().getFullYear()} جميع الحقوق محفوظة ${siteConfig.teacherName}.`;
+        document.getElementById('footer-copyright').innerHTML = `&copy; ${new Date().getFullYear()} جميع الحقوق محفوظة لـ${siteConfig.teacherName}.`;
 
         const socialLinksContainer = document.getElementById('social-links-container');
         let socialLinksHTML = '';
@@ -634,6 +634,7 @@
 
 </body>
 </html>
+
 
 
 
