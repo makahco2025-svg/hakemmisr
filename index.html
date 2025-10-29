@@ -5,8 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>حكيم مصر</title>
     
-    <link rel="icon" type="image/png" href="https://www2.0zz0.com/2025/10/29/01/433103945.jpg">
+    <link rel="icon" type="image/png" href="https://www2.0zz0.com/2025/10/29/01/110174061.jpg">
 
+    <!-- إضافة مكتبة Font Awesome للأيقونات الحقيقية -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&display=swap" rel="stylesheet">
@@ -22,7 +24,7 @@
             --text-secondary: #a0a0a0;
             --heading-color: #ffffff;
             --border-color: #333333;
-            --site-bg-image: url('https://www2.0zz0.com/2025/10/29/01/268788814.jpg');
+            --site-bg-image: url('https://www2.0zz0.com/2025/10/29/01/895402939.jpg');
         }
 
         * {
@@ -173,15 +175,14 @@
             min-height: 60vh;
         }
 
-        /* ===== إدارة عرض وإخفاء الأقسام ===== */
         .view-section {
-            display: none; /* إخفاء كل الأقسام افتراضياً */
+            display: none;
             opacity: 0;
             transition: opacity 0.5s ease-in-out;
         }
 
         .view-section.active {
-            display: block; /* إظهار القسم النشط */
+            display: block;
             opacity: 1;
         }
 
@@ -204,7 +205,6 @@
             border-radius: 2px;
         }
 
-        /* ===== تصميم قسم التعريف بالمدرس ===== */
         .intro-section {
             text-align: center;
             margin-bottom: 80px;
@@ -223,7 +223,6 @@
             line-height: 1.8;
         }
 
-        /* ===== تصميم بطاقات اختيار الأقسام ===== */
         .grades-selection {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -266,7 +265,6 @@
             font-size: 1rem;
         }
 
-        /* ===== تصميم محتوى الأقسام ===== */
         section h3 {
             color: var(--heading-color);
             font-size: 1.5rem;
@@ -374,6 +372,33 @@
             color: var(--bg-primary);
         }
 
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+
+        .social-links a {
+            color: var(--text-secondary);
+            font-size: 1.5rem;
+            text-decoration: none;
+            transition: color 0.3s ease, transform 0.2s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            border: 1px solid var(--border-color);
+        }
+
+        .social-links a:hover {
+            color: var(--accent-color);
+            transform: scale(1.1);
+            border-color: var(--accent-color);
+        }
+
         footer {
             background-color: var(--bg-secondary);
             text-align: center;
@@ -424,6 +449,7 @@
 
     <footer>
         <div class="container">
+            <div class="social-links" id="social-links-container"></div>
             <p id="footer-copyright">جاري التحميل...</p>
         </div>
     </footer>
@@ -435,11 +461,20 @@
 
     const siteConfig = {
         teacherName: "حكيم مصر",
-        profilePicUrl: "https://www2.0zz0.com/2025/10/29/01/676333229.jpg",
-        siteBackgroundUrl: "https://www2.0zz0.com/2025/10/29/01/711694975.jpg",
-        faviconUrl: "https://www2.0zz0.com/2025/10/29/01/176504751.jpg",
+        profilePicUrl: "https://www2.0zz0.com/2025/10/29/01/880753789.jpg",
+        siteBackgroundUrl: "https://www2.0zz0.com/2025/10/29/01/895402939.jpg",
+        faviconUrl: "https://via.placeholder.com/32.png",
         email: "your-email@example.com",
         introText: "أنا معلم شغوف بتقديم العلوم بطريقة مبسطة وممتعة. أهدف إلى مساعدة كل طالب على تحقيق إمكانياته الكاملة من خلال محتوى تعليمي عالي الجودة يغطي جميع جوانب المنهج الدراسي. انضم إلينا في هذه الرحلة التعليمية.",
+
+        socialLinks: [
+            { name: 'فيسبوك', url: 'https://facebook.com/yourprofile', icon: 'fab fa-facebook-f' },
+            { name: 'تويتر', url: 'https://twitter.com/yourprofile', icon: 'fab fa-twitter' },
+            { name: 'انستغرام', url: 'https://instagram.com/yourprofile', icon: 'fab fa-instagram' },
+            { name: 'لينكدإن', url: 'https://linkedin.com/in/yourprofile', icon: 'fab fa-linkedin-in' },
+            { name: 'تيك توك', url: 'https://tiktok.com/@yourprofile', icon: 'fab fa-tiktok' },
+            { name: 'يوتيوب', url: 'https://youtube.com/yourchannel', icon: 'fab fa-youtube' }
+        ],
 
         grades: [
             {
@@ -476,8 +511,10 @@
                 icon: '📙',
                 description: 'استعد للامتحانات النهائية مع مراجعات شاملة.',
                 videos: [
-                    { id: "VIDEO_ID_1_G3", title: "فيديو: المراجعة النهائية في الفيزياء", description: "مراجعة شاملة لمنهج الفيزياء قبل الامتحانات." },
-                    { id: "VIDEO_ID_2_G3", title: "فيديو: الكيمياء العضوية", description: "شرح تفصيلي للمركبات العضوية وتفاعلاتها." }
+                    { id: "Hxp4uekGbhw", title: "مدخل الجغرافيا السياسية", description: "مدخل الجغرافيا السياسية." },
+                    { id: "VIDEO_ID_2_G3", title: "فيديو: الكيمياء العضوية", description: "شرح تفصيلي للمركبات العضوية وتفاعلاتها." },
+                    // == تمت إضافة الفيديو الجديد هنا ==
+                    { id: "Hxp4uekGbhw", title: "مدخل الجغرافيا السياسية", description: "مدخل الجغرافيا السياسية." }
                 ],
                 pdfs: [
                     { url: "#", title: "ملف: امتحانات سابقة", description: "مجموعة امتحانات السنوات السابقة مع حلولها." },
@@ -494,7 +531,6 @@
     document.addEventListener('DOMContentLoaded', function() {
         const mainContent = document.getElementById('main-content');
 
-        // --- تحديث معلومات الهيدر والفوتر ---
         const profilePicEl = document.getElementById('header-profile-pic');
         profilePicEl.src = siteConfig.profilePicUrl || 'https://via.placeholder.com/100';
         profilePicEl.alt = `صورة ${siteConfig.teacherName}`;
@@ -504,7 +540,13 @@
         if (siteConfig.faviconUrl) { faviconLink.href = siteConfig.faviconUrl; }
         document.getElementById('footer-copyright').innerHTML = `&copy; ${new Date().getFullYear()} جميع الحقوق محفوظة لمدونة ${siteConfig.teacherName}.`;
 
-        // --- دوال التحكم في العرض ---
+        const socialLinksContainer = document.getElementById('social-links-container');
+        let socialLinksHTML = '';
+        siteConfig.socialLinks.forEach(link => {
+            socialLinksHTML += `<a href="${link.url}" target="_blank" aria-label="${link.name}"><i class="${link.icon}"></i></a>`;
+        });
+        socialLinksContainer.innerHTML = socialLinksHTML;
+
         function showView(viewId) {
             document.querySelectorAll('.view-section').forEach(section => {
                 section.classList.remove('active');
@@ -526,7 +568,6 @@
                     <div class="grades-selection">
             `;
             siteConfig.grades.forEach(grade => {
-                // استخدام data-grade-id بدلاً من onclick
                 homeHTML += `
                     <div class="grade-card" data-grade-id="${grade.id}">
                         <div class="icon">${grade.icon}</div>
@@ -546,7 +587,6 @@
 
             let gradeHTML = `
                 <section id="grade-view" class="view-section active">
-                    <!-- استخدام data-action بدلاً من onclick -->
                     <a href="#" class="back-button" data-action="go-home">← العودة للرئيسية</a>
                     <h2>${gradeData.name}</h2>
                     <h3>الفيديوهات التعليمية</h3>
@@ -575,25 +615,18 @@
                 </section>
             `;
             mainContent.innerHTML = contactHTML;
-            document.title = `تواصل معي - مدونة ${siteConfig.teacherName}`;
+            document.title = `تواصل معي -  ${siteConfig.teacherName}`;
         }
 
-        // === إعداد مستمعي الأحداث (Event Listeners) ===
-        
-        // مستمع للقائمة العلوية
         document.getElementById('nav-home').addEventListener('click', renderHomeView);
         document.getElementById('nav-contact').addEventListener('click', renderContactView);
 
-        // مستمع رئيسي للمحتوى (Event Delegation)
         mainContent.addEventListener('click', function(event) {
-            // التحقق من النقر على بطاقة قسم
             const gradeCard = event.target.closest('.grade-card');
             if (gradeCard) {
                 const gradeId = gradeCard.dataset.gradeId;
                 renderGradeView(gradeId);
             }
-
-            // التحقق من النقر على زر العودة
             const backButton = event.target.closest('.back-button');
             if (backButton) {
                 const action = backButton.dataset.action;
@@ -603,11 +636,9 @@
             }
         });
 
-        // --- عرض الصفحة الرئيسية عند البدء ---
         renderHomeView();
     });
     </script>
 
 </body>
 </html>
-
